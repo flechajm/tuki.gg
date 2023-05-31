@@ -1,0 +1,150 @@
+{
+  "notifications": {
+    "title": "Notifications",
+    "header": "{title} it's FREE! 🎁",
+    "body": "👆 Tap to claim it.",
+    "contentTitle": "🎁 {title}",
+    "summary": "Claim it now and save <s>${price}</s>!",
+    "empty": "You don't have notifications.\nCome back later 👋"
+  },
+  "common": {
+    "tuki": "tuki !",
+    "claim": "Claim",
+    "buy": "Buy",
+    "ok": "Ok",
+    "apply": "Apply",
+    "cancel": "Cancel",
+    "back": "Back",
+    "share": "Share",
+    "doubleBackTap": "Tap again to exit",
+    "goToStore": "Go to store",
+    "goBackToHome": "Go back to Home"
+  },
+  "home": {
+    "searchAgain": "Search again"
+  },
+  "search": {
+    "title": "Search game",
+    "hint": "Write the game title...",
+    "tooltipErase": "Clear text",
+    "tooltipFilter": "Search filter",
+    "tooltipClose": "Close search",
+    "tooltipResetFilter": "Reset filter",
+    "popupTitle": "Search filter",
+    "stores": {
+      "title": "Stores:",
+      "oneSelected": "1 selected",
+      "multiSelected": "{quantity} selected",
+      "selectAll": "All",
+      "selectNone": "None"
+    },
+    "priceRange": {
+      "title": "Price range:",
+      "free": "FREE"
+    },
+    "steamRating": {
+      "title": "Steam Rating:",
+      "any": "Any"
+    },
+    "metacriticScore": {
+      "title": "Metacritic Score:",
+      "any": "Any"
+    },
+    "aaaGame": "AAA Game:",
+    "onSale": "On sale:"
+  },
+  "sort": {
+    "tooltip": "Ordering",
+    "popupTitle": "Ordering",
+    "orderBy": "Order by:",
+    "sortDirection": "Sort direction:",
+    "ascending": "Ascending",
+    "descending": "Descending",
+    "dealRating": "Deal rating",
+    "title": "Title",
+    "savings": "Discount",
+    "price": "Price",
+    "metacriticScore": "Metacritic Score",
+    "steamRating": "Steam Reviews",
+    "release": "Release date",
+    "store": "Store",
+    "recent": "More recent",
+    "pageSize": "Games per page:"
+  },
+  "gameCard": {
+    "free": "FREE!",
+    "share": "{title} it's free!\n\nGo to the following link to claim it:\n👉 {link}\n\nFor more free games download tuki.gg, available on Google Play and AppStore."
+  },
+  "gameDetail": {
+    "title": "Game info",
+    "categories": "CATEGORIES:",
+    "genres": "GENRES:",
+    "developer": "DEVELOPER:",
+    "publisher": "PUBLISHER:",
+    "releaseDate": "RELEASE DATE:",
+    "includeAchievements": "Include {total} Steam Achievements",
+    "viewAllAchievements": "View\nall",
+    "prices": {
+      "priceUSD": "Price in USD:",
+      "normalPrice": "Localized price:",
+      "discount": "Discount:",
+      "finalPrice": "Final price (w/o taxes):"
+    },
+    "steamReviews": {
+      "title": "Steam reviews",
+      "desc": "{percent}% (of {total} reviews) are positive.",
+      "overwhelminglyPositive": "Extremadamente positivas",
+      "veryPositive": "Muy positivas",
+      "positive": "Positivas",
+      "mostlyPositive": "Mayormente positivas",
+      "mixed": "Variadas",
+      "mostlyNegative": "Mayormente negativas",
+      "veryNegative": "Muy negativas",
+      "overwhelminglyNegative": "Extremadamente negativas"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "langCurrency": "Language & currency",
+    "externalLinks": "External links",
+    "gameInfo": "Game information",
+    "appInterface": "App interface",
+    "gameData": "Games data",
+    "gameDataDescription": "All the game info retrieved from the stores",
+    "displayCurrency": "Currency",
+    "notifyFreeGames": "Notify me about 🎁 FREE games",
+    "displayCurrencyDescription": "Only for Steam in the game info screen",
+    "openInStore": "Open in the store app",
+    "openInStoreDescription": "Tries to open links in the store app. On failure, the\noption below is used",
+    "openInApp": "Open whithin app",
+    "openInAppDescription": "Uncheck to use an external browser",
+    "steamInformation": "Steam information",
+    "steamInformationDescription": "When you see this badge, the game has Steam info",
+    "steamPriceLocalized": "Steam price localized",
+    "steamPriceLocalizedDescription": "When you see this badge, its price will be localized",
+    "showExtendedInfo": "Show extended info",
+    "showExtendedInfoDescription": "Such as Release date, Developer, Publisher, etc.",
+    "showSteamReviews": "Show Steam reviews",
+    "showSteamAchievements": "Show Steam achievements",
+    "showMetacriticScore": "Show Metacritic score"
+  },
+  "about": {
+    "title": "About",
+    "version": "Version",
+    "madeIn": "Made with ♥️ in 🇦🇷 Argentina",
+    "copyright": "© tuki.gg",
+    "developedBy": "Developed by",
+    "poweredBy": "Powered by"
+  },
+  "dateFormats": {
+    "shortDateTime": "MM/dd/yyyy '-' HH:mm",
+    "shortDate": "MM/dd/yyyy",
+    "shortTime": "HH:mm",
+    "largeDate": "MMMM dd',' yyyy",
+    "largeDateTime": "MMMM dd',' yyyy 'at' HH:mm"
+  },
+  "errors": {
+    "empty": "There's no results for this query",
+    "fail": "Couldn't get the\ninformation for this game."
+  }
+}

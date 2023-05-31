@@ -1,0 +1,17 @@
+{
+  "api": {
+    "url": "https://www.cheapshark.com/api/1.0",
+    "endpoints": {
+      "deals": "deals?pageSize=10&",
+      "games": "games?id={id}",
+      "stores": "stores",
+      "steamGame": "https://store.steampowered.com/api/appdetails?appids={appId}&cc={cc}&l={lang}"
+    }
+  },
+  "termsOfServiceUrl": "https://tuki.gg/tos",
+  "privacyPolicyUrl": "https://tuki.gg/privacy",
+  "releaseUrl": {
+    "playStore": "https://play.google.com/store/apps/details?id=gg.tuki",
+    "appStore": "https://apps.apple.com/us/app/"
+  }
+}
