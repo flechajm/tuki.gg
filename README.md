@@ -30,3 +30,6 @@ With **tuki.gg** you can:
 ## Legals
 - [Terms of Service](https://flechajm.github.io/tuki.gg/tos)  
 - [Privacy Policy](https://flechajm.github.io/tuki.gg/privacypolicy)
+
+## License
+This project is 100% open-source. Licensed under [GNU General Public License v3.0](https://github.com/flechajm/tuki.gg/blob/main/LICENSE).
