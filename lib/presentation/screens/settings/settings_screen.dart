@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -108,27 +110,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ],
               ),
-              HeaderTitle(
-                margin: const EdgeInsets.only(top: 50),
-                text: Localization.xNotifications.title,
-                options: [
-                  Option(
-                    text: Localization.xSettings.notifyFreeGames,
-                    value: Switch(
-                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      value: AppSettings.notifyFreeGames,
-                      onChanged: (value) async {
-                        if (value) {
-                          await NotificationHandler.registerNotifications();
-                        } else {
-                          await NotificationHandler.cancelNotifications();
-                        }
-                        AppSettings.setNotifyFreeGames(value).whenComplete(() => setState(() {}));
-                      },
-                    ),
-                  )
-                ],
-              ),
+              if (Platform.isAndroid)
+                HeaderTitle(
+                  margin: const EdgeInsets.only(top: 50),
+                  text: Localization.xNotifications.title,
+                  options: [
+                    Option(
+                      text: Localization.xSettings.notifyFreeGames,
+                      value: Switch(
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        value: AppSettings.notifyFreeGames,
+                        onChanged: (value) async {
+                          if (value) {
+                            await NotificationHandler.registerNotifications();
+                          } else {
+                            await NotificationHandler.cancelNotifications();
+                          }
+                          AppSettings.setNotifyFreeGames(value).whenComplete(() => setState(() {}));
+                        },
+                      ),
+                    )
+                  ],
+                ),
               HeaderTitle(
                 margin: const EdgeInsets.only(top: 50),
                 text: Localization.xSettings.externalLinks,

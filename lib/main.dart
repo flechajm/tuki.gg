@@ -145,18 +145,20 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   UtilPreferences.prefs = await SharedPreferences.getInstance();
-  notificationService.init();
-  notificationService.updateNotificationsStatus();
 
-  await Workmanager().initialize(callbackDispatcher);
+  if (Platform.isAndroid) {
+    notificationService.init();
+    notificationService.updateNotificationsStatus();
+    await Workmanager().initialize(callbackDispatcher);
 
-  NotificationAppLaunchDetails? notificationLaunch = await notificationService.getNotificationLaunch();
+    NotificationAppLaunchDetails? notificationLaunch = await notificationService.getNotificationLaunch();
 
-  if (notificationLaunch != null && notificationLaunch.didNotificationLaunchApp) {
-    Util.openUrl(
-      notificationLaunch.notificationResponse!.payload!,
-      openFromNotification: true,
-    );
+    if (notificationLaunch != null && notificationLaunch.didNotificationLaunchApp) {
+      Util.openUrl(
+        notificationLaunch.notificationResponse!.payload!,
+        openFromNotification: true,
+      );
+    }
   }
 
   SystemChrome.setSystemUIOverlayStyle(
@@ -172,22 +174,24 @@ Future<void> main() async {
 
   AppSettings.load();
 
-  if (AppSettings.notifyFreeGames) {
-    PermissionStatus status = await Permission.notification.status;
-    if (status.isDenied) {
-      await notificationService.showDummy();
-    }
+  if (Platform.isAndroid) {
+    if (AppSettings.notifyFreeGames) {
+      PermissionStatus status = await Permission.notification.status;
+      if (status.isDenied) {
+        await notificationService.showDummy();
+      }
 
-    await Workmanager().registerPeriodicTask(
-      DateTime.now().millisecondsSinceEpoch.toString(),
-      taskName,
-      frequency: const Duration(hours: 1),
-      initialDelay: const Duration(minutes: 5),
-      existingWorkPolicy: ExistingWorkPolicy.replace,
-      constraints: Constraints(
-        networkType: NetworkType.connected,
-      ),
-    );
+      await Workmanager().registerPeriodicTask(
+        DateTime.now().millisecondsSinceEpoch.toString(),
+        taskName,
+        frequency: const Duration(hours: 1),
+        initialDelay: const Duration(minutes: 5),
+        existingWorkPolicy: ExistingWorkPolicy.replace,
+        constraints: Constraints(
+          networkType: NetworkType.connected,
+        ),
+      );
+    }
   }
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
