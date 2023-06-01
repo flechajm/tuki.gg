@@ -136,8 +136,7 @@ logo.large {
   max-height: calc(100vh - 100px);
   filter: drop-shadow(0px 0px 40px var(--shadow-mobile));
 }
-
-footer {
+#container footer {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -145,13 +144,17 @@ footer {
   bottom: 2rem;
   text-align: center;
 }
-footer .terms-privacy {
+#container footer .links {
   display: flex;
-  justify-content: center;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
-footer .disclaimer {
+#container footer .links :last-child {
+  margin-bottom: 3px;
+}
+#container footer .disclaimer {
   font-size: 0.7em;
 }
 
@@ -175,7 +178,7 @@ footer .disclaimer {
   #container #header .badge img {
     width: 192px;
   }
-  #container footer .terms-privacy {
+  #container footer .links {
     gap: 0.3rem;
   }
   #container #mobile {
