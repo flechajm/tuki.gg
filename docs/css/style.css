@@ -149,10 +149,7 @@ logo.large {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-}
-#container footer .links :last-child {
-  margin-bottom: 3px;
+  gap: 0.5rem;
 }
 #container footer .disclaimer {
   font-size: 0.7em;

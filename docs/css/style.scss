@@ -169,11 +169,7 @@ logo {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      gap: 1rem;
-
-      :last-child {
-        margin-bottom: 3px;
-      }
+      gap: 0.5rem;
     }
 
     .disclaimer {
