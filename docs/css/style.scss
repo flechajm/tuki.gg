@@ -165,9 +165,10 @@ footer {
   bottom: 2rem;
   text-align: center;
 
-  .terms-privacy {
+  .links {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: row;
     gap: 1rem;
   }
@@ -206,7 +207,7 @@ footer {
     }
 
     footer {
-      .terms-privacy {
+      .links {
         gap: 0.3rem;
       }
     }
