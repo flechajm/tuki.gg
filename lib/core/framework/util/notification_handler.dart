@@ -28,8 +28,12 @@ class NotificationHandler {
     return path;
   }
 
-  bool exists(String notificationId) {
+  bool findById(String notificationId) {
     return _notifications.any((notification) => notification.id == notificationId);
+  }
+
+  bool findByElapsedTime(int gameId, int elapsedDays) {
+    return _notifications.any((notificatiton) => notificatiton.gameId == gameId && DateTime.now().difference(notificatiton.date).inDays <= 30);
   }
 
   Future<void> add(TukiNotification notification) async {
@@ -39,7 +43,7 @@ class NotificationHandler {
   }
 
   Future<void> remove(String notificationId) async {
-    bool notifExists = exists(notificationId);
+    bool notifExists = findById(notificationId);
 
     if (notifExists) {
       _notifications.removeWhere((notification) => notification.id == notificationId);

@@ -71,19 +71,7 @@ void callbackDispatcher() {
         String? largeIconPath = await _downloadAndSaveFile(deal.coverImage, 'notif_game_${deal.gameID}');
         String notificationId = "${deal.gameID}_${deal.storeID}_${DateTime.now().format("MMyyyy")}";
 
-        // await notificationHandler.add(
-        //   TukiNotificationModel(
-        //     id: "RE4_${DateTime.now().millisecondsSinceEpoch}",
-        //     gameName: "Resident Evil 4",
-        //     gameId: 2123,
-        //     storeId: 1,
-        //     price: 59.99,
-        //     imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/2050650/header.jpg",
-        //     date: DateTime.now(),
-        //   ),
-        // );
-
-        if (!notificationHandler.exists(notificationId)) {
+        if (!notificationHandler.findByElapsedTime(deal.gameID, 30)) {
           await notificationHandler.add(
             TukiNotificationModel(
               id: notificationId,
