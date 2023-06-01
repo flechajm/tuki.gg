@@ -416,6 +416,7 @@ class _SearchDialogState extends State<SearchDialog> {
         Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Transform.translate(
               offset: const Offset(-10, 0),
@@ -503,22 +504,6 @@ class _SearchDialogState extends State<SearchDialog> {
                       backgroundColor: ThemeManager.kPrimaryColor,
                       selectedColor: ThemeManager.kPrimaryColor,
                       labelPadding: const EdgeInsets.only(left: 0),
-                      avatar: Container(
-                        alignment: Alignment.centerRight,
-                        padding: const EdgeInsets.only(right: 5),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(25),
-                            topLeft: Radius.circular(25),
-                          ),
-                        ),
-                        child: Icon(
-                          isSelected ? FontAwesomeIcons.solidCircleCheck : FontAwesomeIcons.solidCircleXmark,
-                          size: 14,
-                          color: isSelected ? Colors.greenAccent[700] : Colors.grey[400],
-                        ),
-                      ),
                       onSelected: (value) {
                         setState(() {
                           _storesFilter[store.id.toString()] = !isSelected;
@@ -528,19 +513,29 @@ class _SearchDialogState extends State<SearchDialog> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Container(
-                            alignment: Alignment.centerRight,
-                            padding: const EdgeInsets.only(right: 5),
-                            decoration: const BoxDecoration(
+                            width: 48,
+                            alignment: Alignment.centerLeft,
+                            padding: const EdgeInsets.only(left: 5, right: 7),
+                            decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(25),
-                                bottomRight: Radius.circular(25),
-                              ),
+                              borderRadius: BorderRadius.circular(25),
                             ),
-                            child: CachedNetworkImage(
-                              fadeInDuration: const Duration(milliseconds: 100),
-                              imageUrl: store.iconUrl,
-                              filterQuality: FilterQuality.high,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  isSelected ? FontAwesomeIcons.solidCircleCheck : FontAwesomeIcons.solidCircleXmark,
+                                  size: 14,
+                                  color: isSelected ? Colors.greenAccent[700] : Colors.grey[400],
+                                ),
+                                const SizedBox(width: 5),
+                                CachedNetworkImage(
+                                  alignment: Alignment.centerLeft,
+                                  fadeInDuration: const Duration(milliseconds: 100),
+                                  imageUrl: store.iconUrl,
+                                  filterQuality: FilterQuality.high,
+                                ),
+                              ],
                             ),
                           ),
                           const SizedBox(width: 10),
