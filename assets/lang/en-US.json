@@ -136,6 +136,12 @@
     "developedBy": "Developed by",
     "poweredBy": "Powered by"
   },
+  "legals": {
+    "title": "Legals",
+    "tos": "Terms of Use",
+    "privacyPolicy": "Privacy Policy",
+    "read": "Read"
+  },
   "dateFormats": {
     "shortDateTime": "MM/dd/yyyy '-' HH:mm",
     "shortDate": "MM/dd/yyyy",

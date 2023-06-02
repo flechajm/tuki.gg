@@ -190,7 +190,7 @@ logo {
       align-items: center;
 
       .subtitle {
-        font-size: 2em;
+        font-size: 1.5em;
         text-align: center;
         margin: 2rem 1rem;
       }
@@ -216,6 +216,12 @@ logo {
       position: absolute;
       z-index: -1;
       opacity: 0.02;
+    }
+  }
+
+  #legals {
+    main {
+      width: 70vw;
     }
   }
 }

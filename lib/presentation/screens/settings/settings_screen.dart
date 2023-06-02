@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:global_configuration/global_configuration.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../core/framework/localization/localization.dart';
@@ -9,6 +10,7 @@ import '../../../core/framework/theme/theme_manager.dart';
 import '../../../core/framework/util/app_settings.dart';
 import '../../../core/framework/util/general_navigator.dart';
 import '../../../core/framework/util/notification_handler.dart';
+import '../../../core/framework/util/util.dart';
 import '../../widgets/common/cool_app_bar/cool_app_bar.dart';
 import '../../widgets/common/simple_dropdown/simlpe_dropdown.dart';
 import '../../widgets/common/simple_scroll/simple_scroll.dart';
@@ -212,6 +214,44 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       value: AppSettings.showMetacriticScore,
                       onChanged: (value) async {
                         AppSettings.setShowMetacriticScore(value).whenComplete(() => setState(() {}));
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              HeaderTitle(
+                margin: const EdgeInsets.only(top: 50),
+                text: Localization.xLegals.title,
+                options: [
+                  Option(
+                    text: Localization.xLegals.privacyPolicy,
+                    value: TextLink(
+                      Localization.xLegals.read,
+                      textDecorationStyle: TextDecorationStyle.dotted,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: ThemeManager.kPrimaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onTap: () {
+                        final String url = GlobalConfiguration().getValue("privacyPolicyUrl");
+                        Util.openUrl(url);
+                      },
+                    ),
+                  ),
+                  Option(
+                    text: Localization.xLegals.tos,
+                    value: TextLink(
+                      Localization.xLegals.read,
+                      textDecorationStyle: TextDecorationStyle.dotted,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: ThemeManager.kPrimaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onTap: () {
+                        final String url = GlobalConfiguration().getValue("termsOfServiceUrl");
+                        Util.openUrl(url);
                       },
                     ),
                   ),

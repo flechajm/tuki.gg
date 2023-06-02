@@ -8,8 +8,8 @@
       "steamGame": "https://store.steampowered.com/api/appdetails?appids={appId}&cc={cc}&l={lang}"
     }
   },
-  "termsOfServiceUrl": "https://tuki.gg/tos",
-  "privacyPolicyUrl": "https://tuki.gg/privacy",
+  "termsOfServiceUrl": "https://flechajm.github.io/tuki.gg/tos",
+  "privacyPolicyUrl": "https://flechajm.github.io/tuki.gg/privacypolicy",
   "releaseUrl": {
     "playStore": "https://play.google.com/store/apps/details?id=gg.tuki",
     "appStore": "https://apps.apple.com/us/app/"

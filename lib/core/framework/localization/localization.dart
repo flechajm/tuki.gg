@@ -13,6 +13,7 @@ import 'package:easy_localization/easy_localization.dart';
 /// * GameDetail`GameDetailLocalization`
 /// * Settings `SettingsLocalization`
 /// * About `AboutLocalization`
+/// * Legals `LegalsLocalization`
 /// * DateFormat `DateFormatsLocalization`
 /// * Errors `ErrorsLocalization`
 class Localization {
@@ -46,6 +47,8 @@ class Localization {
   /// About Localization
   static late AboutLocalization xAbout;
 
+  static late LegalsLocalization xLegals;
+
   /// Errors Localization
   static late ErrorsLocalization xErrors;
 
@@ -60,6 +63,7 @@ class Localization {
       xGameDetail = GameDetailLocalization._instance();
       xSettings = SettingsLocalization._instance();
       xAbout = AboutLocalization._instance();
+      xLegals = LegalsLocalization._instance();
       xDateFormat = DateFormatsLocalization._instance();
       xErrors = ErrorsLocalization._instance();
     });
@@ -311,6 +315,15 @@ class AboutLocalization {
   final poweredBy = tr("about.poweredBy");
 
   AboutLocalization._instance();
+}
+
+class LegalsLocalization {
+  final title = tr("legals.title");
+  final tos = tr("legals.tos");
+  final privacyPolicy = tr("legals.privacyPolicy");
+  final read = tr("legals.read");
+
+  LegalsLocalization._instance();
 }
 
 class ErrorsLocalization {

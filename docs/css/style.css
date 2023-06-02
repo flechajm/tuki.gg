@@ -163,7 +163,7 @@ logo.large {
     align-items: center;
   }
   #container #header .subtitle {
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: center;
     margin: 2rem 1rem;
   }
@@ -182,6 +182,9 @@ logo.large {
     position: absolute;
     z-index: -1;
     opacity: 0.02;
+  }
+  #legals main {
+    width: 70vw;
   }
 }
 @media only screen and (max-width: 1366px) and (min-width: 700px) {
