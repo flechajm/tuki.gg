@@ -15,7 +15,7 @@ With **tuki.gg** you can:
 - Sort games by many values, such as: `Deal Rating`, `Title`, `Discount`, `Price`, `Metacritic Score`, `Steam Reviews`, `Release date`, `Store` and `More recent`.
 - Select the displayed currency (only available for Steam games) from: `USD`, `€`, `£` and `ARS$`.
 - Select the app interface language and game sheet information language between `Español` and `English`
-- And more stuff...
+- And more!
 
 <p align="center">
   <img src="https://github.com/flechajm/tuki.gg/blob/main/docs/images/google-play-badge.png" width="256px">
