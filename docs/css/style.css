@@ -132,6 +132,9 @@ logo.large {
   margin: 2rem 0;
   width: 240px;
 }
+#container #header .badge img:hover {
+  filter: drop-shadow(0px 0px 10px black);
+}
 #container #mobile img {
   max-height: calc(100vh - 100px);
   filter: drop-shadow(0px 0px 40px var(--shadow-mobile));
