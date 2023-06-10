@@ -73,7 +73,7 @@
   },
   "gameCard": {
     "free": "¡GRATIS!",
-    "share": "¡{title} está gratis!\n\nEntra al siguiente enlace para reclamarlo:\n👉 {link}\n\nPara más juegos gratis descarga tuki.gg, disponible en Google Play y AppStore."
+    "share": "¡{title} está gratis!\n\nEntra al siguiente enlace para reclamarlo:\n👉 {link}\n\nPara saber más visita: https://flechajm.github.io/tuki.gg"
   },
   "gameDetail": {
     "title": "Info del Juego",
