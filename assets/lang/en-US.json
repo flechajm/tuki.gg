@@ -116,7 +116,7 @@
     "displayCurrencyDescription": "Only for Steam in the game info screen",
     "openInStore": "Open in the store app",
     "openInStoreDescription": "Tries to open links in the store app. On failure, the\noption below is used",
-    "openInApp": "Open whithin app",
+    "openInApp": "Open within app",
     "openInAppDescription": "Uncheck to use an external browser",
     "steamInformation": "Steam information",
     "steamInformationDescription": "When you see this badge, the game has Steam info",
