@@ -59,7 +59,11 @@ class Util {
     }
   }
 
-  static Future<bool> doubleTapToExit(BuildContext context) {
+  static void doubleTapToExit(
+    BuildContext context, {
+    required VoidCallback onCallbackOk,
+    required VoidCallback onCallbackFalse,
+  }) {
     DateTime now = DateTime.now();
     if (_currentBackPressTime == null || now.difference(_currentBackPressTime!) > const Duration(seconds: 2)) {
       _currentBackPressTime = now;
@@ -72,10 +76,15 @@ class Util {
         mainAxisAlignment: MainAxisAlignment.center,
         backgroundColor: ThemeManager.kPrimaryColor,
       );
-      return Future.value(false);
+      Future.delayed(
+        const Duration(seconds: 2),
+        () {
+          onCallbackFalse();
+        },
+      );
     }
 
-    return Future.value(true);
+    onCallbackOk();
   }
 
   static bool isNewerVersion(String actualVersion, String newVersion) {

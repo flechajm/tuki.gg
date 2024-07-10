@@ -84,6 +84,13 @@ class ThemeManager {
       splashColor: kPrimaryColor90,
       highlightColor: kPrimaryColor40,
       unselectedWidgetColor: kPrimaryColor90,
+      iconButtonTheme: IconButtonThemeData(
+        style: ButtonStyle(
+          overlayColor: WidgetStatePropertyAll(
+            kPrimaryColor40,
+          ),
+        ),
+      ),
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white24, width: 2),

@@ -125,6 +125,7 @@ class NotificationItem extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 decorationStyle: TextDecorationStyle.solid,
                                 decoration: TextDecoration.lineThrough,
+                                decorationColor: ThemeManager.kSecondaryColor,
                               ),
                             ),
                           ],

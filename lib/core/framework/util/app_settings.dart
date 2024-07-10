@@ -124,7 +124,6 @@ class AppSettings {
         "us": "USD",
         "es": "€",
         "gb": "£",
-        "ar": "ARS\$",
       };
 
   //! Settings Methods

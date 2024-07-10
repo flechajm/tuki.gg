@@ -74,6 +74,7 @@ class _CoolAppBarState extends State<CoolAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      surfaceTintColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       centerTitle: !widget.showLogo,
       title: !_searchMode && widget.showLogo
@@ -85,7 +86,12 @@ class _CoolAppBarState extends State<CoolAppBar> {
               ),
             )
           : widget.title != null
-              ? Text(widget.title!)
+              ? Text(
+                  widget.title!,
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                )
               : null,
       automaticallyImplyLeading: false,
       leadingWidth: _searchMode ? double.infinity : null,
@@ -280,7 +286,7 @@ class _CoolAppBarState extends State<CoolAppBar> {
                 FontAwesomeIcons.solidBell,
                 color: Colors.white,
               ),
-              tooltip: Localization.xSort.tooltip,
+              tooltip: Localization.xNotifications.title,
               splashRadius: 22,
             ),
             if (value)

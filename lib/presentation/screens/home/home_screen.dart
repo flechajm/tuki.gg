@@ -80,107 +80,104 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      onPopInvoked: (didPop) => Util.doubleTapToExit(context),
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: CoolAppBar(
-          showBackButton: false,
-          showLogo: true,
-          searchMode: _searchMode,
-          filterFunction: applyFilter,
-          filterParams: _paramsDeal,
-        ),
-        body: BlocProvider<DealsCubit>(
-          create: (context) => sl<DealsCubit>()..getDeals(_paramsDeal),
-          child: BlocConsumer<DealsCubit, DealsState>(
-            listener: (context, state) {
-              if (state is DealsLoaded) {
-                _isEmpty = state.dealsResponse.isEmpty;
-                if (state.dealsResponse.isNotEmpty && state.dealsResponse.length >= 10) {
-                  _paramsDeal.pageNumber += 1;
-                  _hasMoreItems = true;
-                } else {
-                  _hasMoreItems = false;
-                }
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: CoolAppBar(
+        showBackButton: false,
+        showLogo: true,
+        searchMode: _searchMode,
+        filterFunction: applyFilter,
+        filterParams: _paramsDeal,
+      ),
+      body: BlocProvider<DealsCubit>(
+        create: (context) => sl<DealsCubit>()..getDeals(_paramsDeal),
+        child: BlocConsumer<DealsCubit, DealsState>(
+          listener: (context, state) {
+            if (state is DealsLoaded) {
+              _isEmpty = state.dealsResponse.isEmpty;
+              if (state.dealsResponse.isNotEmpty && state.dealsResponse.length >= 10) {
+                _paramsDeal.pageNumber += 1;
+                _hasMoreItems = true;
+              } else {
+                _hasMoreItems = false;
               }
-            },
-            builder: (context, state) {
-              _blocDealContext = context;
-              if (state is DealsLoaded) {
-                if (_dealInfoList.isEmpty) {
-                  _dealInfoList = state.dealsResponse;
-                } else if (_dealInfoList != state.dealsResponse) {
-                  _dealInfoList.addAll(state.dealsResponse);
-                }
-              } else if (state is DealsError) {
-                return ErrorMessage(
-                  repeat: false,
-                  image: "assets/images/general/error.json",
-                  text: state.failure.message,
-                  child: SimpleButton(
-                    text: Localization.xHome.searchAgain,
-                    onTap: () async => context.read<DealsCubit>().getDeals(_paramsDeal),
-                  ),
-                );
+            }
+          },
+          builder: (context, state) {
+            _blocDealContext = context;
+            if (state is DealsLoaded) {
+              if (_dealInfoList.isEmpty) {
+                _dealInfoList = state.dealsResponse;
+              } else if (_dealInfoList != state.dealsResponse) {
+                _dealInfoList.addAll(state.dealsResponse);
               }
+            } else if (state is DealsError) {
+              return ErrorMessage(
+                repeat: false,
+                image: "assets/images/general/error.json",
+                text: state.failure.message,
+                child: SimpleButton(
+                  text: Localization.xHome.searchAgain,
+                  onTap: () async => context.read<DealsCubit>().getDeals(_paramsDeal),
+                ),
+              );
+            }
 
-              return _isEmpty
-                  ? ErrorMessage(
-                      image: "assets/images/general/empty_results.json",
-                      text: Localization.xErrors.empty,
-                      child: SimpleButton(
-                        text: Localization.xHome.searchAgain,
-                        onTap: () async => context.read<DealsCubit>().getDeals(_paramsDeal),
-                      ),
-                    )
-                  : RefreshIndicator(
-                      displacement: 40,
-                      backgroundColor: ThemeManager.kPrimaryColor,
-                      color: Colors.white,
-                      onRefresh: () async {
-                        setState(() {
-                          _paramsDeal.pageNumber = 0;
-                        });
-                        applyFilter(_paramsDeal);
-                      },
-                      child: Stack(
-                        children: [
-                          Container(
-                            alignment: Alignment.topCenter,
-                            child: SimpleScroll(
-                              onlyDisableGlow: true,
-                              child: ListView.builder(
-                                controller: _scrollController,
-                                padding: EdgeInsets.zero,
-                                physics: const AlwaysScrollableScrollPhysics(),
-                                itemCount: _dealInfoList.length + 1,
-                                itemBuilder: (context, index) {
-                                  if (state is DealsInitial || (state is DealsLoading && _paramsDeal.pageNumber == 0)) {
-                                    return const CenterCircleLoading(heightDivider: 1.2);
-                                  }
+            return _isEmpty
+                ? ErrorMessage(
+                    image: "assets/images/general/empty_results.json",
+                    text: Localization.xErrors.empty,
+                    child: SimpleButton(
+                      text: Localization.xHome.searchAgain,
+                      onTap: () async => context.read<DealsCubit>().getDeals(_paramsDeal),
+                    ),
+                  )
+                : RefreshIndicator(
+                    displacement: 40,
+                    backgroundColor: ThemeManager.kPrimaryColor,
+                    color: Colors.white,
+                    onRefresh: () async {
+                      setState(() {
+                        _paramsDeal.pageNumber = 0;
+                      });
+                      applyFilter(_paramsDeal);
+                    },
+                    child: Stack(
+                      children: [
+                        Container(
+                          alignment: Alignment.topCenter,
+                          child: SimpleScroll(
+                            onlyDisableGlow: true,
+                            child: ListView.builder(
+                              controller: _scrollController,
+                              padding: EdgeInsets.zero,
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              itemCount: _dealInfoList.length + 1,
+                              itemBuilder: (context, index) {
+                                if (state is DealsInitial || (state is DealsLoading && _paramsDeal.pageNumber == 0)) {
+                                  return const CenterCircleLoading(heightDivider: 1.2);
+                                }
 
-                                  if (index < _dealInfoList.length) {
-                                    DealInfo deal = _dealInfoList[index];
+                                if (index < _dealInfoList.length) {
+                                  DealInfo deal = _dealInfoList[index];
 
-                                    return GameCard(deal: deal);
-                                  } else if (_hasMoreItems) {
-                                    return const SizedBox(
-                                      height: 80,
-                                      child: CenterCircleLoading(size: 20),
-                                    );
-                                  } else {
-                                    return const SizedBox.shrink();
-                                  }
-                                },
-                              ),
+                                  return GameCard(deal: deal);
+                                } else if (_hasMoreItems) {
+                                  return const SizedBox(
+                                    height: 80,
+                                    child: CenterCircleLoading(size: 20),
+                                  );
+                                } else {
+                                  return const SizedBox.shrink();
+                                }
+                              },
                             ),
                           ),
-                        ],
-                      ),
-                    );
-            },
-          ),
+                        ),
+                      ],
+                    ),
+                  );
+          },
         ),
       ),
     );
