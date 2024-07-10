@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:global_configuration/global_configuration.dart';
 
-import '../../../core/http/http_client.dart';
 import '../../domain/entities/deal_info.dart';
 import '../../domain/usecases/deal_info/params/params_deal.dart';
 import '../models/deal_info/deal_info_model.dart';
@@ -14,8 +13,8 @@ class DealsDataSource extends DataSource implements IDealsDataSource {
   final String _endpoint = GlobalConfiguration().getDeepValue("api:endpoints:deals");
 
   DealsDataSource({
-    required HttpClient client,
-  }) : super(client: client);
+    required super.client,
+  });
 
   @override
   Future<List<DealInfo>> getDeals(ParamsDeal params) async {

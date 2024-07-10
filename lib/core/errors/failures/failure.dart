@@ -10,10 +10,7 @@ abstract class Failure {
 
 class ServerFailure extends Failure {
   const ServerFailure({
-    required int code,
-    required String message,
-  }) : super(
-          code: code,
-          message: message,
-        );
+    required super.code,
+    required super.message,
+  });
 }

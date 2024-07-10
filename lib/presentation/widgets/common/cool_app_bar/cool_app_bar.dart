@@ -239,10 +239,8 @@ class _CoolAppBarState extends State<CoolAppBar> {
               barrierColor: Colors.black87,
               barrierDismissible: false,
               builder: (context) {
-                return WillPopScope(
-                  onWillPop: () async {
-                    return Future.value(true).whenComplete(() => _focusNodeSearch.requestFocus());
-                  },
+                return PopScope(
+                  onPopInvoked: (didPop) => _focusNodeSearch.requestFocus(),
                   child: SearchDialog(
                     onApplyFilter: widget.filterFunction!,
                     gameTitle: _textSearchController.text,

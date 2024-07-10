@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:global_configuration/global_configuration.dart';
 
-import '../../../core/http/http_client.dart';
 import '../models/store/store_model.dart';
 import 'base/datasource.dart';
 import 'interfaces/istores_datasource.dart';
@@ -12,8 +11,8 @@ class StoresDataSource extends DataSource implements IStoresDataSource {
   final String _endpoint = GlobalConfiguration().getDeepValue("api:endpoints:stores");
 
   StoresDataSource({
-    required HttpClient client,
-  }) : super(client: client);
+    required super.client,
+  });
 
   @override
   Future<List<StoreModel>> getStores() async {

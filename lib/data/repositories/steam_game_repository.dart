@@ -7,8 +7,8 @@ import 'base/repository.dart';
 
 class SteamGameRepository extends Repository<SteamGameDataSource> implements ISteamGameRepository {
   SteamGameRepository({
-    required SteamGameDataSource dataSource,
-  }) : super(dataSource: dataSource);
+    required super.dataSource,
+  });
 
   @override
   Future<Either<Failure, SteamGame>> getSteamGame(int appId) async {

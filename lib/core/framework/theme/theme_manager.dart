@@ -119,25 +119,25 @@ class ThemeManager {
         actionsPadding: const EdgeInsets.only(bottom: 15, right: 15),
       ),
       switchTheme: SwitchThemeData(
-        thumbColor: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          if (states.contains(MaterialState.selected)) return kPrimaryColor;
+        thumbColor: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) return kPrimaryColor;
 
-          if (states.contains(MaterialState.disabled)) return Colors.white;
+          if (states.contains(WidgetState.disabled)) return Colors.white;
 
           return Colors.grey[100];
         }),
-        trackColor: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          if (states.contains(MaterialState.selected)) return kPrimaryColor40;
+        trackColor: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) return kPrimaryColor40;
 
-          if (states.contains(MaterialState.disabled)) return Colors.white;
+          if (states.contains(WidgetState.disabled)) return Colors.white;
 
           return Colors.grey[300];
         }),
       ),
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) => states.contains(MaterialState.disabled) ? Colors.red : null,
+        foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+          (Set<WidgetState> states) => states.contains(WidgetState.disabled) ? Colors.red : null,
         ),
       )),
       snackBarTheme: SnackBarThemeData(

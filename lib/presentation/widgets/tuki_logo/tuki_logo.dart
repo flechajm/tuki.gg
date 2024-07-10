@@ -7,9 +7,9 @@ class TukiLogo extends StatelessWidget {
   final double size;
 
   const TukiLogo({
-    Key? key,
+    super.key,
     this.size = 84,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

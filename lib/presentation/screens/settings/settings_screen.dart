@@ -42,15 +42,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        if (_appLang != AppSettings.appLang) {
-          GeneralNavigator.push(const HomeScreen());
-          return Future.value(false);
-        } else {
-          return Future.value(true);
-        }
-      },
+    return PopScope(
+      canPop: _appLang != AppSettings.appLang,
+      onPopInvoked: (didPop) => GeneralNavigator.push(const HomeScreen()),
       child: Scaffold(
         appBar: CoolAppBar(
           showBackButton: true,

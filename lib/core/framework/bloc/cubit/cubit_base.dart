@@ -6,7 +6,7 @@ import '../../../errors/failures/failure.dart';
 export '../../../errors/failures/failure.dart';
 
 abstract class CubitBase<Entity, State> extends Cubit<State> {
-  CubitBase(State initialState) : super(initialState);
+  CubitBase(super.initialState);
 
   State getState(Either<Failure, Entity> eitherData);
 }

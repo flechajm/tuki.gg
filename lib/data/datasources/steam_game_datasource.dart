@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:global_configuration/global_configuration.dart';
 
-import '../../../core/http/http_client.dart';
 import '../../core/errors/exceptions/server_exception.dart';
 import '../../core/framework/localization/localization.dart';
 import '../../core/framework/util/app_settings.dart';
@@ -14,8 +13,8 @@ class SteamGameDataSource extends DataSource implements ISteamGameDataSource {
   final String _endpoint = GlobalConfiguration().getDeepValue("api:endpoints:steamGame");
 
   SteamGameDataSource({
-    required HttpClient client,
-  }) : super(client: client);
+    required super.client,
+  });
 
   @override
   Future<SteamGameModel> getSteamGame(int appId) async {

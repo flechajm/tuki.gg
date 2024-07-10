@@ -14,36 +14,35 @@ dependencies:
   easy_localization: ^3.0.1
   shared_preferences: ^2.1.1
   font_awesome_flutter: ^10.4.0
-  share_plus: ^7.0.0
+  share_plus: ^9.0.0
   global_configuration: ^2.0.0-nullsafety.1
   url_launcher: ^6.1.10
-  shimmer: ^2.0.0
+  shimmer: ^3.0.0
   cached_network_image: ^3.2.3
-  package_info_plus: ^4.0.0
+  package_info_plus: ^8.0.0
   animated_text_kit: ^4.2.2
   text_scroll: ^0.2.0
-  lottie: ^2.3.2
+  lottie: ^3.1.2
   workmanager: ^0.5.1
-  flutter_local_notifications: ^14.0.0+2
+  flutter_local_notifications: ^17.2.1+1
   path_provider: ^2.0.15
-  permission_handler: ^10.2.0
+  permission_handler: ^11.3.1
 
   #Architecture
-  http: ^0.13.6
+  http: ^1.2.1
   dartz: ^0.10.1
   get_it: ^7.5.0
   provider: ^6.0.5
-  flutter_bloc: ^8.1.2
+  flutter_bloc: ^8.1.6
   json_annotation: ^4.8.1
   internet_connection_checker: ^1.0.0+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
   build_runner: ^2.3.3
   json_serializable: ^6.6.2
-  dart_code_metrics: ^5.7.3
 
 flutter:
   uses-material-design: true

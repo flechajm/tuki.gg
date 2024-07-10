@@ -80,8 +80,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => Util.doubleTapToExit(context),
+    return PopScope(
+      onPopInvoked: (didPop) => Util.doubleTapToExit(context),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: CoolAppBar(

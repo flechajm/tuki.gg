@@ -7,13 +7,12 @@ class SimpleScroll extends StatelessWidget {
   final bool onlyDisableGlow;
 
   const SimpleScroll({
-    Key? key,
+    super.key,
     required this.child,
     this.scrollDirection = Axis.vertical,
     this.controller,
     this.onlyDisableGlow = false,
-  })  : assert(onlyDisableGlow && controller == null || !onlyDisableGlow),
-        super(key: key);
+  }) : assert(onlyDisableGlow && controller == null || !onlyDisableGlow);
 
   @override
   Widget build(BuildContext context) {

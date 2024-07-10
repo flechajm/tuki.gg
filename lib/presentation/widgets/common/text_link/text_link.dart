@@ -14,7 +14,7 @@ class TextLink extends StatefulWidget {
 
   const TextLink(
     this.text, {
-    Key? key,
+    super.key,
     this.style,
     this.color,
     this.activeColor,
@@ -22,7 +22,7 @@ class TextLink extends StatefulWidget {
     this.textDecorationStyle = TextDecorationStyle.solid,
     this.onTap,
     this.isDropdownMenuItem = false,
-  }) : super(key: key);
+  });
 
   @override
   State<TextLink> createState() => _TextLinkState();

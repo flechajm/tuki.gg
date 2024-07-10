@@ -11,14 +11,14 @@ class CenterCircleLoading extends StatelessWidget {
   final Color? backgroundColor;
 
   const CenterCircleLoading({
-    Key? key,
+    super.key,
     this.heightDivider = 1.5,
     this.size,
     this.margin,
     this.value,
     this.color,
     this.backgroundColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

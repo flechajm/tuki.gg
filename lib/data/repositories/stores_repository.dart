@@ -7,8 +7,8 @@ import 'base/repository.dart';
 
 class StoresRepository extends Repository<StoresDataSource> implements IStoresRepository {
   StoresRepository({
-    required StoresDataSource dataSource,
-  }) : super(dataSource: dataSource);
+    required super.dataSource,
+  });
 
   @override
   Future<Either<Failure, List<Store>>> getStores() async {

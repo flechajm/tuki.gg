@@ -8,8 +8,8 @@ import 'base/repository.dart';
 
 class DealsRepository extends Repository<DealsDataSource> implements IDealsRepository {
   DealsRepository({
-    required DealsDataSource dataSource,
-  }) : super(dataSource: dataSource);
+    required super.dataSource,
+  });
 
   @override
   Future<Either<Failure, List<DealInfo>>> getDeals(ParamsDeal params) async {
