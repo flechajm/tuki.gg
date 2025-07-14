@@ -70,59 +70,29 @@ class ThemeManager {
     return ThemeData(
       fontFamily: kSecondaryFont,
       scaffoldBackgroundColor: kBackgroundColor,
-      bottomSheetTheme: const BottomSheetThemeData(
-        backgroundColor: Colors.transparent,
-      ),
-      appBarTheme: AppBarTheme(
-        backgroundColor: kBackgroundColor,
-        elevation: 0,
-      ),
-      progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: kSecondaryColor,
-        circularTrackColor: kSecondaryColor90,
-      ),
+      bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.transparent),
+      appBarTheme: AppBarTheme(backgroundColor: kBackgroundColor, elevation: 0),
+      progressIndicatorTheme: ProgressIndicatorThemeData(color: kSecondaryColor, circularTrackColor: kSecondaryColor90),
       splashColor: kPrimaryColor90,
       highlightColor: kPrimaryColor40,
       unselectedWidgetColor: kPrimaryColor90,
-      iconButtonTheme: IconButtonThemeData(
-        style: ButtonStyle(
-          overlayColor: WidgetStatePropertyAll(
-            kPrimaryColor40,
-          ),
-        ),
-      ),
+      iconButtonTheme: IconButtonThemeData(style: ButtonStyle(overlayColor: WidgetStatePropertyAll(kPrimaryColor40))),
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white24, width: 2),
-          borderRadius: const BorderRadius.all(
-            Radius.elliptical(5, 5),
-          ),
-          color: kPrimaryColor,
-        ),
-      ),
-      tabBarTheme: TabBarTheme(
-        labelPadding: const EdgeInsets.all(8),
-        unselectedLabelColor: kPrimaryColor,
-        indicator: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.elliptical(5, 5)),
           color: kPrimaryColor,
         ),
       ),
-      drawerTheme: const DrawerThemeData(
-        backgroundColor: Colors.white,
+      tabBarTheme: TabBarThemeData(
+        labelPadding: const EdgeInsets.all(8),
+        unselectedLabelColor: kPrimaryColor,
+        indicator: BoxDecoration(borderRadius: const BorderRadius.all(Radius.elliptical(5, 5)), color: kPrimaryColor),
       ),
-      dialogTheme: DialogTheme(
-        titleTextStyle: TextStyle(
-          fontFamily: kPrimaryFont,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-        ),
-        contentTextStyle: TextStyle(
-          fontFamily: kPrimaryFont,
-          fontSize: 14,
-          color: Colors.black,
-        ),
+      drawerTheme: const DrawerThemeData(backgroundColor: Colors.white),
+      dialogTheme: DialogThemeData(
+        titleTextStyle: TextStyle(fontFamily: kPrimaryFont, fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+        contentTextStyle: TextStyle(fontFamily: kPrimaryFont, fontSize: 14, color: Colors.black),
         actionsPadding: const EdgeInsets.only(bottom: 15, right: 15),
       ),
       switchTheme: SwitchThemeData(
@@ -142,32 +112,21 @@ class ThemeManager {
         }),
       ),
       textButtonTheme: TextButtonThemeData(
-          style: ButtonStyle(
-        foregroundColor: WidgetStateProperty.resolveWith<Color?>(
-          (Set<WidgetState> states) => states.contains(WidgetState.disabled) ? Colors.red : null,
-        ),
-      )),
-      snackBarTheme: SnackBarThemeData(
-        contentTextStyle: TextStyle(fontFamily: kPrimaryFont),
-      ),
-      checkboxTheme: const CheckboxThemeData(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.elliptical(3, 3),
+        style: ButtonStyle(
+          foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+            (Set<WidgetState> states) => states.contains(WidgetState.disabled) ? Colors.red : null,
           ),
         ),
       ),
+      snackBarTheme: SnackBarThemeData(contentTextStyle: TextStyle(fontFamily: kPrimaryFont)),
+      checkboxTheme: const CheckboxThemeData(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.elliptical(3, 3)))),
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: kSecondaryColor,
         selectionColor: kSecondaryColor40,
         selectionHandleColor: kSecondaryColor,
       ),
       textTheme: TextTheme(
-        bodyMedium: TextStyle(
-          fontSize: 14,
-          fontFamily: kSecondaryFont,
-          color: Colors.white,
-        ),
+        bodyMedium: TextStyle(fontSize: 14, fontFamily: kSecondaryFont, color: Colors.white),
       ),
       sliderTheme: SliderThemeData(
         trackHeight: 8,
@@ -185,10 +144,7 @@ class ThemeManager {
   }
 
   static ThemeData getRadioTheme(BuildContext context) {
-    return Theme.of(context).copyWith(
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-    );
+    return Theme.of(context).copyWith(splashColor: Colors.transparent, highlightColor: Colors.transparent);
   }
 
   static ThemeData getExpansionTileTheme(BuildContext context, {bool primaryTheme = true}) {
@@ -196,10 +152,7 @@ class ThemeManager {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       unselectedWidgetColor: primaryTheme ? kPrimaryColor : kPrimaryLightColor,
-      colorScheme: ColorScheme.light(
-        secondary: Colors.blue,
-        primary: primaryTheme ? kSecondaryColor : kPrimaryLightColor,
-      ),
+      colorScheme: ColorScheme.light(secondary: Colors.blue, primary: primaryTheme ? kSecondaryColor : kPrimaryLightColor),
       dividerColor: Colors.transparent,
       textTheme: TextTheme(
         titleMedium: TextStyle(
@@ -218,21 +171,11 @@ class ThemeManager {
       highlightColor: disableHighlight ? Colors.transparent : kSecondaryColor40,
       unselectedWidgetColor: Colors.red,
       dividerColor: Colors.transparent,
-      colorScheme: ColorScheme.fromSwatch().copyWith(
-        secondary: Colors.blue,
-      ),
+      colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.blue),
       textTheme: TextTheme(
-        titleMedium: TextStyle(
-          fontFamily: kPrimaryFont,
-          fontWeight: FontWeight.w500,
-        ),
-        bodyLarge: TextStyle(
-          fontFamily: kPrimaryFont,
-          fontWeight: FontWeight.w500,
-        ),
-        bodyMedium: TextStyle(
-          fontFamily: kPrimaryFont,
-        ),
+        titleMedium: TextStyle(fontFamily: kPrimaryFont, fontWeight: FontWeight.w500),
+        bodyLarge: TextStyle(fontFamily: kPrimaryFont, fontWeight: FontWeight.w500),
+        bodyMedium: TextStyle(fontFamily: kPrimaryFont),
       ),
     );
   }

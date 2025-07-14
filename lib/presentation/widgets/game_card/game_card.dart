@@ -42,7 +42,7 @@ class _GameCardState extends State<GameCard> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: widget.deal.salePrice == 0 ? ThemeManager.kSecondaryColor : ThemeManager.kPrimaryLightColor.withOpacity(0.4),
+              color: widget.deal.salePrice == 0 ? ThemeManager.kSecondaryColor : ThemeManager.kPrimaryLightColor.withAlpha(100),
               spreadRadius: 3,
               blurRadius: 8,
             ),
@@ -112,7 +112,7 @@ class _GameCardState extends State<GameCard> {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -167,7 +167,7 @@ class _GameCardState extends State<GameCard> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: widget.deal.savings == 0 ? 15 : 10, vertical: 5),
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.7),
+                  color: Colors.green.withAlpha(180),
                   borderRadius: widget.deal.savings == 0
                       ? const BorderRadius.only(
                           topLeft: Radius.circular(10),
@@ -184,7 +184,7 @@ class _GameCardState extends State<GameCard> {
                         blurRadius: 10,
                         spreadRadius: 8,
                         color: Colors.black54,
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -230,10 +230,12 @@ class _GameCardState extends State<GameCard> {
     Uri uri = Uri.parse("https://tinyurl.com/api-create.php?url=$dealUrl");
     http.post(uri).then((response) {
       if (response.statusCode == 200) {
-        Share.share(
-          Localization.xGameCard.share(
-            title: widget.deal.title,
-            link: response.body,
+        SharePlus.instance.share(
+          ShareParams(
+            text: Localization.xGameCard.share(
+              title: widget.deal.title,
+              link: response.body,
+            ),
           ),
         );
       }

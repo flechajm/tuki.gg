@@ -86,29 +86,29 @@ class _CoolAppBarState extends State<CoolAppBar> {
               ),
             )
           : widget.title != null
-              ? Text(
-                  widget.title!,
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
-                )
-              : null,
+          ? Text(
+              widget.title!,
+              style: const TextStyle(
+                color: Colors.white,
+              ),
+            )
+          : null,
       automaticallyImplyLeading: false,
       leadingWidth: _searchMode ? double.infinity : null,
       leading: _searchMode
           ? _buildSearchBar()
           : widget.showBackButton
-              ? IconButton(
-                  padding: const EdgeInsets.only(bottom: 2),
-                  onPressed: widget.onTapBack ?? () => GeneralNavigator.pop(),
-                  icon: Icon(
-                    FontAwesomeIcons.arrowLeft,
-                    color: ThemeManager.kPrimaryColor,
-                  ),
-                  tooltip: Localization.xCommon.back,
-                  splashRadius: 22,
-                )
-              : null,
+          ? IconButton(
+              padding: const EdgeInsets.only(bottom: 2),
+              onPressed: widget.onTapBack ?? () => GeneralNavigator.pop(),
+              icon: Icon(
+                FontAwesomeIcons.arrowLeft,
+                color: ThemeManager.kPrimaryColor,
+              ),
+              tooltip: Localization.xCommon.back,
+              splashRadius: 22,
+            )
+          : null,
       actions: widget.showActionButtons && !_searchMode
           ? [
               _buildSearchButton(),
@@ -122,7 +122,7 @@ class _CoolAppBarState extends State<CoolAppBar> {
 
   Widget _buildSearchBar() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(
         children: [
           Flexible(
@@ -165,30 +165,32 @@ class _CoolAppBarState extends State<CoolAppBar> {
                               _searchMode = false;
                             });
                           },
-                          icon: const Icon(
+                          icon: Icon(
                             FontAwesomeIcons.x,
                             size: 18,
-                            color: Colors.white12,
+                            color: ThemeManager.kPrimaryColor,
                           ),
                           tooltip: Localization.xSearch.tooltipClose,
                         ),
                       ],
                     ),
-                    contentPadding: const EdgeInsets.only(left: 20, right: 10),
+                    // contentPadding: const EdgeInsets.only(left: 20, right: 10, bottom: 5, top: 0),
+                    contentPadding: const EdgeInsets.fromLTRB(12, 20, 12, 12),
                     filled: true,
+                    fillColor: Colors.black,
                     hintText: Localization.xSearch.hint,
                     hintStyle: TextStyle(
-                      color: Colors.white10,
+                      color: Colors.white24,
                       fontFamily: ThemeManager.kPrimaryFont,
                     ),
                     focusColor: ThemeManager.kPrimaryColor,
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: ThemeManager.kPrimaryColor, width: 2),
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: ThemeManager.kPrimaryColor90, width: 2),
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                   style: TextStyle(
@@ -231,36 +233,36 @@ class _CoolAppBarState extends State<CoolAppBar> {
     );
   }
 
+  void _showSearchDialog() async {
+    await showDialog(
+      context: context,
+      barrierColor: Colors.black87,
+      barrierDismissible: false,
+      builder: (context) {
+        return PopScope(
+          onPopInvokedWithResult: (didPop, result) => _focusNodeSearch.requestFocus(),
+          child: SearchDialog(
+            onApplyFilter: widget.filterFunction!,
+            gameTitle: _textSearchController.text,
+            params: _filterParams!,
+            onCancel: () {
+              GeneralNavigator.pop();
+              _focusNodeSearch.requestFocus();
+            },
+          ),
+        );
+      },
+    );
+  }
+
   Widget _buildFilterButton() {
     return IconButton(
       visualDensity: VisualDensity.comfortable,
       padding: const EdgeInsets.only(bottom: 2),
-      onPressed: () {
+      onPressed: () async {
         _focusNodeSearch.unfocus();
-        Future.delayed(
-          Duration(milliseconds: _focusNodeSearch.hasFocus ? 300 : 0),
-          () {
-            showDialog(
-              context: context,
-              barrierColor: Colors.black87,
-              barrierDismissible: false,
-              builder: (context) {
-                return PopScope(
-                  onPopInvoked: (didPop) => _focusNodeSearch.requestFocus(),
-                  child: SearchDialog(
-                    onApplyFilter: widget.filterFunction!,
-                    gameTitle: _textSearchController.text,
-                    params: _filterParams!,
-                    onCancel: () {
-                      GeneralNavigator.pop();
-                      _focusNodeSearch.requestFocus();
-                    },
-                  ),
-                );
-              },
-            );
-          },
-        );
+        await Future.delayed(Duration(milliseconds: _focusNodeSearch.hasFocus ? 300 : 0));
+        _showSearchDialog();
       },
       icon: const Icon(
         FontAwesomeIcons.filter,

@@ -13,13 +13,10 @@ class NotificationService {
   late final InitializationSettings initializationSettings;
 
   NotificationService() {
-    initializationSettings = InitializationSettings(
-      android: _settingsAndroid,
-      iOS: _settingsIOS,
-    );
+    initializationSettings = InitializationSettings(android: _settingsAndroid, iOS: _settingsIOS);
   }
 
-  init() async {
+  void init() async {
     _notifications.initialize(initializationSettings, onDidReceiveNotificationResponse: onReceiveNotification);
   }
 
@@ -32,11 +29,7 @@ class NotificationService {
     return _notifications.getNotificationAppLaunchDetails();
   }
 
-  Future<NotificationDetails> _notificationDetails({
-    required DealInfo dealInfo,
-    String? largeIconPath,
-    String? store,
-  }) async {
+  Future<NotificationDetails> _notificationDetails({required DealInfo dealInfo, String? largeIconPath, String? store}) async {
     return NotificationDetails(
       android: AndroidNotificationDetails(
         'tuki.gg',
@@ -60,28 +53,10 @@ class NotificationService {
     );
   }
 
-  Future<void> show({
-    int id = 0,
-    String? title,
-    String? body,
-    String? payload,
-    String? image,
-    required DealInfo dealInfo,
-    String? store,
-  }) async {
-    NotificationDetails? notificationDetails = await _notificationDetails(
-      dealInfo: dealInfo,
-      store: store,
-      largeIconPath: image,
-    );
+  Future<void> show({int id = 0, String? title, String? body, String? payload, String? image, required DealInfo dealInfo, String? store}) async {
+    NotificationDetails? notificationDetails = await _notificationDetails(dealInfo: dealInfo, store: store, largeIconPath: image);
 
-    return await _notifications.show(
-      id,
-      title,
-      body,
-      notificationDetails,
-      payload: payload,
-    );
+    return await _notifications.show(id, title, body, notificationDetails, payload: payload);
   }
 
   Future<NotificationDetails> _getNotificationDetailsDummy() async {
@@ -106,9 +81,6 @@ void onReceiveNotification(NotificationResponse notificationResponse) async {
   if (notificationResponse.payload != null) {
     NotificationService().updateNotificationsStatus();
 
-    await Util.openUrl(
-      notificationResponse.payload!,
-      openFromNotification: true,
-    );
+    await Util.openUrl(notificationResponse.payload!, openFromNotification: true);
   }
 }

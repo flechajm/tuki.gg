@@ -45,6 +45,9 @@ class SimpleButton extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
               backgroundColor: _getColor(),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
               side: BorderSide(color: _getBorderColor()),
               foregroundColor: _getForegroundColor(),
             ),
@@ -73,7 +76,7 @@ class SimpleButton extends StatelessWidget {
       case SimpleButonStyle.primary:
         return null;
       case SimpleButonStyle.tuki:
-        return ThemeManager.kSecondaryColor.withOpacity(0.8);
+        return ThemeManager.kSecondaryColor.withAlpha(204);
       default:
         return const Color(0xFF3B2F44);
     }
@@ -84,7 +87,7 @@ class SimpleButton extends StatelessWidget {
       case SimpleButonStyle.primary:
         return Colors.transparent;
       case SimpleButonStyle.tuki:
-        return ThemeManager.kSecondaryColor.withOpacity(0.8);
+        return ThemeManager.kSecondaryColor.withAlpha(204);
       default:
         return const Color(0xFF2A2033);
     }
@@ -95,7 +98,7 @@ class SimpleButton extends StatelessWidget {
       case SimpleButonStyle.primary:
         return ThemeManager.kPrimaryColor;
       case SimpleButonStyle.tuki:
-        return ThemeManager.kSecondaryColor.withOpacity(0.8);
+        return ThemeManager.kSecondaryColor.withAlpha(204);
       default:
         return const Color(0xFF1C1522);
     }

@@ -51,17 +51,9 @@ void callbackDispatcher() {
       await loadTranslationsInBackgroundProccess();
       await Localization.init();
 
-      HttpClient myClient = HttpClient(
-        client: http.Client(),
-        networkInfo: NetworkInfo(InternetConnectionChecker()),
-      );
+      HttpClient myClient = HttpClient(client: http.Client(), networkInfo: NetworkInfo(InternetConnectionChecker.instance));
 
-      String data = await myClient.get(
-        url: DealsDataSource.getUrl(
-          ParamsDeal(priceRange: const RangeValues(0, 0)),
-          completeUrl: true,
-        ),
-      );
+      String data = await myClient.get(url: DealsDataSource.getUrl(ParamsDeal(priceRange: const RangeValues(0, 0)), completeUrl: true));
       List dataList = json.decode(data);
       List<DealInfoModel> deals = dataList.map((deal) => DealInfoModel.fromJson(deal)).toList();
 
@@ -122,10 +114,7 @@ Future<void> loadTranslationsInBackgroundProccess() async {
     path: 'assets/lang',
     startLocale: Locale(newLocale[0], newLocale[1]),
     fallbackLocale: const Locale('es', 'ES'),
-    supportedLocales: const [
-      Locale('es', 'ES'),
-      Locale('en', 'US'),
-    ],
+    supportedLocales: const [Locale('es', 'ES'), Locale('en', 'US')],
     assetLoader: const RootBundleAssetLoader(),
     useOnlyLangCode: false,
     useFallbackTranslations: false,
@@ -134,11 +123,7 @@ Future<void> loadTranslationsInBackgroundProccess() async {
 
   await controller.loadTranslations();
 
-  easy.Localization.load(
-    controller.locale,
-    translations: controller.translations,
-    fallbackTranslations: controller.fallbackTranslations,
-  );
+  easy.Localization.load(controller.locale, translations: controller.translations, fallbackTranslations: controller.fallbackTranslations);
 }
 
 Future<void> main() async {
@@ -154,19 +139,11 @@ Future<void> main() async {
     NotificationAppLaunchDetails? notificationLaunch = await notificationService.getNotificationLaunch();
 
     if (notificationLaunch != null && notificationLaunch.didNotificationLaunchApp) {
-      Util.openUrl(
-        notificationLaunch.notificationResponse!.payload!,
-        openFromNotification: true,
-      );
+      Util.openUrl(notificationLaunch.notificationResponse!.payload!, openFromNotification: true);
     }
   }
 
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.dark,
-    ),
-  );
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent, statusBarBrightness: Brightness.dark));
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   await GlobalConfiguration().loadFromPath('assets/config/app_settings.json');
   await injection.init();
@@ -187,32 +164,25 @@ Future<void> main() async {
         frequency: const Duration(hours: 1),
         initialDelay: const Duration(minutes: 5),
         existingWorkPolicy: ExistingWorkPolicy.replace,
-        constraints: Constraints(
-          networkType: NetworkType.connected,
-        ),
+        constraints: Constraints(networkType: NetworkType.connected),
       );
     }
   }
 
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
-    (_) async {
-      String locale = AppSettings.appLang;
-      List<String> newLocale = locale.split("-");
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) async {
+    String locale = AppSettings.appLang;
+    List<String> newLocale = locale.split("-");
 
-      runApp(
-        EasyLocalization(
-          path: 'assets/lang',
-          startLocale: Locale(newLocale[0], newLocale[1]),
-          fallbackLocale: const Locale('es', 'ES'),
-          supportedLocales: const [
-            Locale('es', 'ES'),
-            Locale('en', 'US'),
-          ],
-          child: const TukiGG(),
-        ),
-      );
-    },
-  );
+    runApp(
+      EasyLocalization(
+        path: 'assets/lang',
+        startLocale: Locale(newLocale[0], newLocale[1]),
+        fallbackLocale: const Locale('es', 'ES'),
+        supportedLocales: const [Locale('es', 'ES'), Locale('en', 'US')],
+        child: const TukiGG(),
+      ),
+    );
+  });
 }
 
 class TukiGG extends StatefulWidget {

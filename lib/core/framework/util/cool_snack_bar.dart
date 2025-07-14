@@ -8,25 +8,19 @@ class CoolSnackBar {
 
   static CoolSnackBar of(BuildContext context) => CoolSnackBar._(context);
 
-  void success(text, {Duration? duration, EdgeInsets? margin}) {
+  void success(String text, {Duration? duration, EdgeInsets? margin}) {
     _show(text: text, icon: FontAwesomeIcons.circleCheck, backgroundColor: Colors.green[600], duration: duration, margin: margin);
   }
 
-  void info(text, {Duration? duration, EdgeInsets? margin}) {
-    _show(
-      text: text,
-      icon: FontAwesomeIcons.circleInfo,
-      backgroundColor: Colors.blue[600],
-      duration: duration,
-      margin: margin,
-    );
+  void info(String text, {Duration? duration, EdgeInsets? margin}) {
+    _show(text: text, icon: FontAwesomeIcons.circleInfo, backgroundColor: Colors.blue[600], duration: duration, margin: margin);
   }
 
-  void warning(text, {Duration? duration, EdgeInsets? margin}) {
+  void warning(String text, {Duration? duration, EdgeInsets? margin}) {
     _show(text: text, icon: FontAwesomeIcons.triangleExclamation, backgroundColor: Colors.yellow[800], duration: duration, margin: margin);
   }
 
-  void error(text, {Duration? duration, EdgeInsets? margin}) {
+  void error(String text, {Duration? duration, EdgeInsets? margin}) {
     _show(text: text, icon: Icons.cancel_rounded, backgroundColor: Colors.red[600], duration: duration, margin: margin);
   }
 
@@ -82,10 +76,7 @@ class CoolSnackBar {
               Container(
                 height: double.infinity,
                 decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(5),
-                    bottomLeft: Radius.circular(5),
-                  ),
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(5), bottomLeft: Radius.circular(5)),
                   color: Colors.white30,
                 ),
                 padding: const EdgeInsets.only(right: 20),

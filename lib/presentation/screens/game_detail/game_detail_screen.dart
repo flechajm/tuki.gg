@@ -69,7 +69,7 @@ class GameDetailScreen extends StatelessWidget {
                     SimpleButton(
                       text: Localization.xCommon.goToStore,
                       onTap: () => Util.openUrl(deal.dealUrl),
-                    )
+                    ),
                   ],
                 ),
               );
@@ -107,7 +107,7 @@ class GameDetailScreen extends StatelessWidget {
                   image: imageProvider,
                   alignment: Alignment.topCenter,
                   colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.2),
+                    Colors.black.withAlpha(50),
                     BlendMode.dstATop,
                   ),
                 ),

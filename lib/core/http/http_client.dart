@@ -20,13 +20,15 @@ class HttpClient {
   Future<String> get({required String url}) async {
     final Uri uri = Uri.parse(url);
 
-    return _execute(() => client.get(
-          uri,
-          headers: _getHeaders(),
-        ));
+    return _execute(
+      () => client.get(
+        uri,
+        headers: _getHeaders(),
+      ),
+    );
   }
 
-  _checkResponse(http.Response response) {
+  dynamic _checkResponse(http.Response response) {
     if (response.statusCode == 200 || response.statusCode == 204) {
       return utf8.decode(response.bodyBytes);
     } else if (response.statusCode == 503 || response.statusCode == 502 || response.statusCode == 500) {

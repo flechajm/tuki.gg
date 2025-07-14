@@ -43,7 +43,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: (didPop, result) {
         if (_appLang != AppSettings.appLang) {
           GeneralNavigator.pushReplacement(const HomeScreen());
         }
@@ -128,7 +128,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           AppSettings.setNotifyFreeGames(value).whenComplete(() => setState(() {}));
                         },
                       ),
-                    )
+                    ),
                   ],
                 ),
               HeaderTitle(

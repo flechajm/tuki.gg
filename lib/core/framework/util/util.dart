@@ -108,7 +108,7 @@ class Util {
     return false;
   }
 
-  static getGreenButtonName(double price) {
+  static String getGreenButtonName(double price) {
     return price == 0 ? Localization.xCommon.claim : Localization.xCommon.buy;
   }
 }

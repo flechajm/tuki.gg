@@ -191,7 +191,7 @@ class _SearchDialogState extends State<SearchDialog> {
                         ),
                       ],
                     )
-                  : _buildStoresList()
+                  : _buildStoresList(),
             ],
           ),
         ),
@@ -391,10 +391,10 @@ class _SearchDialogState extends State<SearchDialog> {
               cantSelected == _storesFilter.length
                   ? Localization.xSearch.xStores.selectAll
                   : cantSelected > 1
-                      ? Localization.xSearch.xStores.multiSelected(quantity: cantSelected)
-                      : cantSelected == 1
-                          ? Localization.xSearch.xStores.oneSelected
-                          : Localization.xSearch.xStores.selectNone,
+                  ? Localization.xSearch.xStores.multiSelected(quantity: cantSelected)
+                  : cantSelected == 1
+                  ? Localization.xSearch.xStores.oneSelected
+                  : Localization.xSearch.xStores.selectNone,
               textDecorationStyle: TextDecorationStyle.dotted,
               onTap: () => setState(() => _stackIndex = 1),
               style: TextStyle(
@@ -501,9 +501,18 @@ class _SearchDialogState extends State<SearchDialog> {
 
                     return ChoiceChip(
                       selected: isSelected,
-                      backgroundColor: ThemeManager.kPrimaryColor,
-                      selectedColor: ThemeManager.kPrimaryColor,
                       labelPadding: const EdgeInsets.only(left: 0),
+                      side: BorderSide(color: Colors.transparent),
+                      color: WidgetStateColor.resolveWith(
+                        (states) {
+                          if (states.contains(WidgetState.selected)) {
+                            return ThemeManager.kPrimaryColor;
+                          }
+
+                          return Colors.grey.shade600;
+                        },
+                      ),
+                      showCheckmark: false,
                       onSelected: (value) {
                         setState(() {
                           _storesFilter[store.id.toString()] = !isSelected;
@@ -526,7 +535,7 @@ class _SearchDialogState extends State<SearchDialog> {
                                 Icon(
                                   isSelected ? FontAwesomeIcons.solidCircleCheck : FontAwesomeIcons.solidCircleXmark,
                                   size: 14,
-                                  color: isSelected ? Colors.greenAccent[700] : Colors.grey[400],
+                                  color: isSelected ? Colors.greenAccent[700] : Colors.redAccent.shade400,
                                 ),
                                 const SizedBox(width: 5),
                                 CachedNetworkImage(
